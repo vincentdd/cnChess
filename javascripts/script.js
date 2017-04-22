@@ -354,9 +354,7 @@ let dataSet = [{
 }]
 
 
-let soldierArr = [],
-    SuperSoldier = new Object,
-    RulesOfSoldier = new Object;
+let soldierArr = [];
 
 function inheritPrototype(subType, superType) {
     let prototype = Object(superType.prototype);
@@ -364,7 +362,7 @@ function inheritPrototype(subType, superType) {
     subType.prototype = prototype;
 }
 
-SuperSoldier.prototype = { //直向行走棋子（車、炮、将、卒）的父类，定义此类棋子的移动方法
+/*SuperSoldier.prototype = { //直向行走棋子（車、炮、将、卒）的父类，定义此类棋子的移动方法
     constructor: SuperSoldier,
     forward: function(num) { //进、退
         this.posY += num;
@@ -375,26 +373,83 @@ SuperSoldier.prototype = { //直向行走棋子（車、炮、将、卒）的父
 }
 
 RulesOfSoldier.prototype = { //兵、卒的父类，定义卒的行走规则
-    constructor: RulesOfSoldier,
-
-}
-
-inheritPrototype(RulesOfSoldier, SuperSoldier); //从超类上继承行走方法
-
-function SubSoldier(soldierObj) {
-    for (let key in soldierObj) {
-        this[key] = soldierObj[key];
+    rules: function(obj) {
+        console.log(this.PosX);
     }
 }
 
-function loopSoldierArr(dataSet) {
+inheritPrototype(RulesOfSoldier, SuperSoldier); //从超类上继承行走方法
+*/
+
+function SuperSoldier() { //直向行走棋子（車、炮、将、卒）的父类，定义此类棋子的移动方法
+    this.forward = function(num) { //进、退
+        this.posY += num;
+    }
+    this.transverse = function(num) { //平
+        this.posX = num;
+    }
+}
+
+function RulesOfSoldier() { //兵、卒的父类，定义卒的行走规则
+    let temp;
+    this.rules = function(obj) {
+        console.log(obj.posY);
+        if (obj.act === "transverse") {
+            temp = Math.abs(this.posX - obj.step);
+            if (this.posY < 250 || temp != 50)
+                return false;
+            else
+                this.transverse.call(obj, obj.step);
+        } else if (obj.act === "forward") {
+            if (obj.step != 50 || obj.posY === "-")
+                return false;
+            else
+                this.forward.call(obj, obj.step);
+        }
+        //if((this.posY < 250 && obj.act != "forward") || obj.posY === "-")
+        console.log(obj.posY);
+        return true;
+    }
+}
+
+RulesOfSoldier.prototype = new SuperSoldier();
+/*设置读写器
+SuperSoldier.prototype.bindData = function(key, val) {
+    Object.defineProperty(this, key, {
+        enumerable: true,
+        configurable: true,
+        set: function(newVal) {
+            console.log('你设置了' + key);
+            console.log('新的' + key + ' = ' + newVal);
+            val = newVal
+            console.log(this);
+            objCanvas.painting();
+        }
+    })
+}*/
+
+function SubSoldier(soldierObj) { //棋子对象构造函数
+    let val;
+    for (let key in soldierObj) {
+        val = soldierObj[key]
+        this[key] = val;
+    }
+}
+
+function loopSoldierArr(dataSet) { //遍历dataset初始化对象列表
+    let temp,
+        obj;
 
     for (let i = 0; i < dataSet.length; i++) {
-        if (dataSet[i].name === "pawn")
-            inheritPrototype(SubSoldier, RulesOfSoldier);
-        let temp = new SubSoldier(dataSet[i]);
-        //if (temp.name === "pawn") {
-        //}
+        obj = dataSet[i];
+        if (obj.name === "pawn")
+            SubSoldier.prototype = new RulesOfSoldier();
+        temp = new SubSoldier(obj);
+        //inheritPrototype(SubSoldier, RulesOfSoldier);
+        /*if (temp.name === "pawn") {
+            temp.__proto__ = new RulesOfSoldier();//SubSoldier实例的原型指向RulesOfSoldier实例
+            //console.log(temp.rules());
+        }*/
         soldierArr.push(temp);
     }
 }
@@ -438,12 +493,12 @@ let gameManager = {
     index: 0,
     name: "",
     color: "",
-    atPosX: "",
-    toPosY: "",
+    //atPosX: "",
+    posX: "",
+    posY: "",
     act: "",
     step: "",
     history: [],
-    flag: true,
     init: function() {
         this.getOrder();
     },
@@ -451,15 +506,20 @@ let gameManager = {
         let _that = this,
             str = "",
             temp = [],
-            reg = /\s/g;
+            reg = /\s/g,
+            obj;
         $("#order").keydown(function(event) {
             if (event.which === 13) {
                 str = $("#order").val().replace(reg, "");
                 $("#order").val("");
                 temp = str.split("");
-                if (_that.handleOrder(temp)) {
-                    _that.pickUpChessman(soldierArr);
-                    this.history.push(soldierArr); //添加
+                obj = _that.handleOrder(temp);
+                if (obj) {
+                    console.log(obj);
+                    obj.rules(_that);
+                    _that.history.push(soldierArr); //添加当前的棋子列表到历史记录
+                    objCanvas.painting();
+                    console.log(obj);
                 } else
                     console.log("错误的命令！");
             }
@@ -467,47 +527,50 @@ let gameManager = {
     },
     handleOrder: function(arr) { //处理输入命令
         let reg = /(\u524d)|(\u540e)/,
-            temp;
+            temp,
+            val,
+            result;
         switch (arr.length) {
             case 5:
                 arr[0].match(reg) != null ? temp = arr.shift() : this.flag = false; //console.log(arr.shift());
-                temp === "前" ? this.index = 1 : this.index = 0;//保存前后参数到index，后续会将匹配元素存入一个最大长度为2的数组
+                temp === "前" ? this.index = 1 : this.index = 0; //保存前后参数到index，后续会将匹配元素存入一个最大长度为2的数组
             case 4:
                 console.log(arr);
                 this.name = this.objName[arr[0]];
-                this.atPosX = this.objStep[arr[1]];
+                this.posX /*atPosX*/ = this.objStep[arr[1]];
                 this.act = this.objBehave[arr[2]];
-                this.step = this.objStep[arr[3]];
-                this.history % 2 === 0 ? this.color = "red" : this.color = "black"; //根据历史步数来判断当前移动的棋子颜色
-                this.flag = true;
-                if (arr[2] === "退")
-                    this.toPosY = "-";
-                else if (arr[2] === "平" || arr[2] === "进")
-                    this.toPosY = "";
-                if (this.name === undefined || this.atPosX === undefined || this.act === undefined || this.step === undefined)
-                    this.flag = false;
+                this.history.length % 2 === 0 ? this.color = "red" : this.color = "black"; //根据历史步数来判断当前移动的棋子颜色
+                if (arr[2] === "退") {
+                    val = "-";
+                } else if (arr[2] === "平" || arr[2] === "进")
+                    val = "";
+                if (this.name === undefined || this.posX /*atPosX*/ === undefined || this.act === undefined || this.step === undefined)
+                    result = false;
+                val += this.objStep[arr[3]];
+                this.step = parseInt(val);
+                result = this.pickUpChessman(soldierArr);
+                this.posY = result.posY;
                 console.log(this);
                 break;
             default:
-                this.flag = false;
+                result = false;
         }
-        return this.flag;
+        return result;
     },
     pickUpChessman: function(arr) { //根据命令寻找棋子，返回soldierArr中的棋子对象或者false
+        let temp = [],
+            result;
         for (var i = 0; i < arr.length; i++) {
-            let temp = [],
-                result;
-            if (this.name === arr[i].name && this.atPosX === arr[i].posX && this.color === arr[i].color) {
-                temp.push(arr[i]);//将匹配对象入栈
+            if (this.name === arr[i].name && this.posX /*atPosX*/ === arr[i].posX && this.color === arr[i].color) {
+                temp.push(arr[i]); //将匹配对象入栈
             }
-            temp.sort(function(a, b) {//根据Y坐标排序
-                a.posY - b.posY;
-            });
-            result = temp[this.index];//根据index参数取匹配对象
-            this.index = 0;
-            return result;
         }
-        return false;
+        temp.sort(function(a, b) { //根据Y坐标排序
+            a.posY - b.posY;
+        });
+        result = temp[this.index]; //根据index参数取匹配对象
+        this.index = 0;
+        return result;
     }
 }
 
@@ -525,6 +588,7 @@ let objCanvas = {
             startY = canvas.height / 2,
             randia = Math.PI / 2;
         this.ctx = canvas.getContext("2d");
+        this.ctx.clearRect(0, 0, 500, 550);
         this.ctx.lineWidth = 3;
         this.ctx.strokeRect(50, 50, 400, 450);
         this.row();
@@ -573,6 +637,7 @@ let objCanvas = {
         this.ctx.stroke();
         this.drawFont(obj.str, obj.fontSize, obj.color, obj.posX, obj.posY, obj.radin, obj.offsetX, obj.offsetY);
         this.ctx.restore(); //恢复到保存点
+        this.ctx.strokeStyle = "#000000";
     },
     //画棋盘线方法
     lineDrawing: function(mx, my, lx, ly) {
