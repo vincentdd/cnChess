@@ -359,58 +359,101 @@ function inheritPrototype(subType, superType) {
     subType.prototype = prototype;
 }
 
-/*SuperSoldier.prototype = { //直向行走棋子（車、炮、将、卒）的父类，定义此类棋子的移动方法
-    constructor: SuperSoldier,
-    forward: function(num) { //进、退
-        this.posY += num;
-    },
-    transverse: function(num) { //平
-        this.posX = num;
-    }
-}
-
-RulesOfSoldier.prototype = { //兵、卒的父类，定义卒的行走规则
-    rules: function(obj) {
-        console.log(this.PosX);
-    }
-}
+/*
 
 inheritPrototype(RulesOfSoldier, SuperSoldier); //从超类上继承行走方法
 */
 
 function SuperSoldier() { //直向行走棋子（車、炮、将、卒）的父类，定义此类棋子的移动方法
+    let _that = this;
     this.forward = function(num) { //进、退
-            this.posY += num;
-        },
-        this.transverse = function(num) { //平
+        this.posY += num;
+    }
+    this.transverse = function(num) { //平
             this.posX = num;
-        },
-        this.move = function() {
-            gameManager.act === "forward" ? this.forward(gameManager.step) : this.transverse(gameManager.step);
         }
+        /**********************************************
+        move方法用来移动棋子，当校验目标坐标上是否为空\
+        存在同色棋子\存在异色棋子时，gameManager对象从
+        SuperSoldier上继承这个方法,并将坐标保存在
+        gameManager.posX、gameManager.posY两个属相上
+        **********************************************/
+    this.move = function() {
+        gameManager.act === "forward" ? _that.forward.call(this, gameManager.step) : _that.transverse.call(this, gameManager.step);
+    }
+    this.isRoadClear = function(startX, startY, endX, endY) { //检测直线移动路径上是否存在棋子，并返回数量
+        let max,
+            min,
+            X,
+            Y,
+            count = 0;
+        if (startX === endX) {
+            min = Math.min(startY, endY);
+            max = Math.max(startY, endY);
+            for (let i = 0, len = soldierArr.length; i < len; i++) {
+                if (soldierArr[i].color === gameManager.color) { //根据棋子颜色转换坐标值
+                    X = soldierArr[i].posX;
+                    Y = soldierArr[i].posY;
+                } else {
+                    X = 500 - soldierArr[i].posX;
+                    Y = 550 - soldierArr[i].posY;
+                }
+                if (X === startX && Y > min && Y < max)
+                    count += 1;
+            }
+        } else {
+            min = Math.min(startX, endX);
+            max = Math.max(startX, endX);
+            for (let i = 0, len = soldierArr.length; i < len; i++) {
+                if (soldierArr[i].color === gameManager.color) { //根据棋子颜色转换坐标值
+                    X = soldierArr[i].posX;
+                    Y = soldierArr[i].posY;
+                } else {
+                    X = 500 - soldierArr[i].posX;
+                    Y = 550 - soldierArr[i].posY;
+                }
+                if (Y === startY && X > min && soldierArr[i].posX < max)
+                    count += 1;
+            }
+        }
+        return count;
+    }
+}
+
+function RulesOfCannon() {
+    this.rules = function() {
+        this.move.call(gameManager);
+    }
+}
+
+function RulesOfRook() { //車、车的父类，定义車的行走规则
+    let result;
+    this.rules = function() {
+        this.move.call(gameManager);
+        this.isRoadClear(this.posX, this.posX, gameManager.posX, gameManager.posY) === 0 ? result = true : result = false;
+        if (result)
+            return gameManager.checkPoint(obj.posX, obj.posY, obj.color);
+    }
 }
 
 function RulesOfSoldier() { //兵、卒的父类，定义卒的行走规则
     let temp;
     this.rules = function(obj) {
         if (obj.act === "transverse") {
-            temp = Math.abs(this.posX - obj.step);
+            temp = Math.abs(this.posX - obj.step); //步长
             if (this.posY < 300 || temp != 50)
                 return false;
-            else
-                this.transverse.call(obj, obj.step);
         } else if (obj.act === "forward") {
             if (obj.step != 50 || obj.posY === "-")
                 return false;
-            else
-                this.forward.call(obj, obj.step);
         }
-        console.log("即将移动到： " + obj.posX + " , " + obj.posY);
+        this.move.call(gameManager);
         return obj.checkPoint(obj.posX, obj.posY, obj.color);
     }
 }
 
 RulesOfSoldier.prototype = new SuperSoldier();
+RulesOfRook.prototype = new SuperSoldier();
 /*设置读写器
 SuperSoldier.prototype.bindData = function(key, val) {
     Object.defineProperty(this, key, {
@@ -440,8 +483,14 @@ function loopSoldierArr(dataSet) { //遍历dataset初始化对象列表
 
     for (let i = 0; i < dataSet.length; i++) {
         obj = dataSet[i];
-        if (obj.name === "pawn")
-            SubSoldier.prototype = new RulesOfSoldier();
+        switch (obj.name) {
+            case "pawn":
+                SubSoldier.prototype = new RulesOfSoldier();
+                break;
+            case "rook":
+                SubSoldier.prototype = new RulesOfRook();
+                break;
+        }
         temp = new SubSoldier(obj);
         //inheritPrototype(SubSoldier, RulesOfSoldier);
         /*if (temp.name === "pawn") {
@@ -514,6 +563,7 @@ let gameManager = {
                 temp = str.split("");
                 obj = _that.handleOrder(temp);
                 result = obj.rules(_that);
+                console.log("即将移动到： " + _that.posX + " , " + _that.posY);
                 if (obj && result != false) {
                     console.log("目标位置检测：" + result);
                     if (typeof result === "number")
@@ -581,6 +631,8 @@ let gameManager = {
             difColorPosX = 500 - X, //转换坐标到异颜色棋子坐标系
             difColorPosY = 550 - Y;
         //console.log(difColorPosX + " , " + difColorPosY);
+        if (X < 50 || X > 450 || Y < 50 || Y > 450)
+            return false;
         for (let i = 0, len = soldierArr.length; i < len; i++) {
             if (soldierArr[i].posX === difColorPosX && soldierArr[i].posY === difColorPosY && soldierArr[i].color != color) {
                 result = i;
