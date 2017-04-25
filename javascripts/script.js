@@ -363,6 +363,11 @@ function inheritPrototype(subType, superType) {
 
 inheritPrototype(RulesOfSoldier, SuperSoldier); //从超类上继承行走方法
 */
+function SuperKnight() { //斜向行走棋子（马、象、士）的父类，定义此类棋子的移动方法
+    this.forward = function(num) { //进、退
+        this.posY += num;
+    }
+}
 
 function SuperSoldier() { //直向行走棋子（車、炮、将、卒）的父类，定义此类棋子的移动方法
     let _that = this;
@@ -412,7 +417,7 @@ function SuperSoldier() { //直向行走棋子（車、炮、将、卒）的父�
                     X = 500 - soldierArr[i].posX;
                     Y = 550 - soldierArr[i].posY;
                 }
-                if (Y === startY && X > min && soldierArr[i].posX < max)
+                if (Y === startY && X > min && X < max)
                     count += 1;
             }
         }
@@ -420,9 +425,36 @@ function SuperSoldier() { //直向行走棋子（車、炮、将、卒）的父�
     }
 }
 
-function RulesOfCannon() {
+function RulesOfKing() {
+    let targetPosition,
+        sum;
+
     this.rules = function() {
         this.move.call(gameManager);
+        targetPosition = gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
+        sum = Math.abs(gameManager.posX + gameManager.posY - this.posX - this.posY);
+        if (gameManager.posX < 400 || gameManager.posX > 500 || gameManager.posY < 50 || gameManager.posY > 150)
+            return false;
+        if (sum === 50 && targetPosition != false)
+            return true;
+    }
+}
+
+function RulesOfCannon() {
+    let chessmanOnTheRoad,
+        targetPosition;
+
+    this.rules = function() {
+        this.move.call(gameManager);
+        chessmanOnTheRoad = this.isRoadClear(this.posX, this.posY, gameManager.posX, gameManager.posY);
+        targetPosition = gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
+        console.log(targetPosition);
+        if (typeof targetPosition === "boolean" && targetPosition === true && chessmanOnTheRoad === 0)
+            return targetPosition;
+        if (typeof targetPosition != "boolean" && chessmanOnTheRoad === 1)
+            return targetPosition;
+        else
+            return false;
     }
 }
 
@@ -432,7 +464,7 @@ function RulesOfRook() { //車、车的父类，定义車的行走规则
         this.move.call(gameManager);
         this.isRoadClear(this.posX, this.posX, gameManager.posX, gameManager.posY) === 0 ? result = true : result = false;
         if (result)
-            return gameManager.checkPoint(obj.posX, obj.posY, obj.color);
+            return gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
     }
 }
 
@@ -454,6 +486,8 @@ function RulesOfSoldier() { //兵、卒的父类，定义卒的行走规则
 
 RulesOfSoldier.prototype = new SuperSoldier();
 RulesOfRook.prototype = new SuperSoldier();
+RulesOfCannon.prototype = new SuperSoldier();
+RulesOfKing.prototype = new SuperSoldier();
 /*设置读写器
 SuperSoldier.prototype.bindData = function(key, val) {
     Object.defineProperty(this, key, {
@@ -489,6 +523,12 @@ function loopSoldierArr(dataSet) { //遍历dataset初始化对象列表
                 break;
             case "rook":
                 SubSoldier.prototype = new RulesOfRook();
+                break;
+            case "cannon":
+                SubSoldier.prototype = new RulesOfCannon();
+                break;
+            case "king":
+                SubSoldier.prototype = new RulesOfKing();
                 break;
         }
         temp = new SubSoldier(obj);
@@ -562,9 +602,9 @@ let gameManager = {
                 $("#order").val("");
                 temp = str.split("");
                 obj = _that.handleOrder(temp);
-                result = obj.rules(_that);
+                obj === undefined ? result = false : result = obj.rules(_that);
                 console.log("即将移动到： " + _that.posX + " , " + _that.posY);
-                if (obj && result != false) {
+                if (result != false) {
                     console.log("目标位置检测：" + result);
                     if (typeof result === "number")
                         _that.dead(result);
@@ -595,8 +635,10 @@ let gameManager = {
                     val = "-";
                 } else if (arr[2] === "平" || arr[2] === "进")
                     val = "";
-                if (this.name === undefined || this.posX /*atPosX*/ === undefined || this.act === undefined || this.step === undefined)
-                    result = false;
+                if (this.name === undefined || this.posX /*atPosX*/ === undefined || this.act === undefined || this.step === undefined) {
+                    result = undefined;
+                    break;
+                }
                 val += this.objStep[arr[3]];
                 this.step = parseInt(val);
                 result = this.pickUpChessman(soldierArr);
@@ -607,7 +649,7 @@ let gameManager = {
                 console.log(this);
                 break;
             default:
-                result = false;
+                result = undefined;
         }
         return result;
     },
@@ -631,7 +673,7 @@ let gameManager = {
             difColorPosX = 500 - X, //转换坐标到异颜色棋子坐标系
             difColorPosY = 550 - Y;
         //console.log(difColorPosX + " , " + difColorPosY);
-        if (X < 50 || X > 450 || Y < 50 || Y > 450)
+        if (X < 50 || X > 450 || Y < 50 || Y > 500)
             return false;
         for (let i = 0, len = soldierArr.length; i < len; i++) {
             if (soldierArr[i].posX === difColorPosX && soldierArr[i].posY === difColorPosY && soldierArr[i].color != color) {
