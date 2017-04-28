@@ -1,3 +1,4 @@
+(function() {
 let soldierArr = [],
     dataSet = [{
         name: "rook",
@@ -364,8 +365,53 @@ function inheritPrototype(subType, superType) {
 inheritPrototype(RulesOfSoldier, SuperSoldier); //从超类上继承行走方法
 */
 function SuperKnight() { //斜向行走棋子（马、象、士）的父类，定义此类棋子的移动方法
-    this.forward = function(num) { //进、退
-        this.posY += num;
+    this.move = function() {
+        this.posX = gameManager.posX;
+        this.posY = gameManager.posY;
+    }
+    this.checkOrder = function(){
+    	if(gameManager.act === "transverse")
+    		return false;
+    	else
+    		return true;
+    }
+    this.getPoint = function(num) { //士、象的计算目标坐标方法，Knight对象继承此实例是，自身所有的同名方法会覆盖此方法
+        let temp = gameManager.step,
+            sign = "";
+
+        sign = this.toStringWithSign(temp);
+        gameManager.posX = parseInt(temp);
+        gameManager.posY += parseInt(sign[0] + num);
+    }
+    this.toStringWithSign = function(num) { //number转带符号string
+        let str = "";
+        num > 0 ? str = "+" : str = "-";
+        str += Math.abs(num);
+        return str;
+    }
+    this.isViable = function() { //校验马脚,
+        let feetPosX,
+            feetPosY,
+            result,
+            _that = this,
+            arr = [];
+
+        arr.push(gameManager.posX - this.posX);
+        arr.push(gameManager.posY - this.posY);
+
+        let roots = arr.map(function(x) {
+            let temp = _that.toStringWithSign(x);
+            temp = parseInt(temp[0] + (Math.abs(temp) - 50));
+            return temp;
+        });
+
+        feetPosX += roots[0];
+        feetPosY += roots[1];
+        result = gameManager.checkPoint(feetPosX, feetPosY, this.color);
+        if (result === true)
+            return true;
+        else
+            return false;
     }
 }
 
@@ -425,6 +471,64 @@ function SuperSoldier() { //直向行走棋子（車、炮、将、卒）的父�
     }
 }
 
+function RulesOfGuard() {
+    this.rules = function() {
+        let step = 50;
+        if(!this.checkOrder())//检测命令是否为平
+        	return false;
+        this.getPoint(step);
+        if (gameManager.posX < 200 || gameManager.posX > 300 || gameManager.posY < 50 || gameManager.posY > 150)
+            return false;
+        return gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
+    }
+}
+
+function RulesOfBishop() {
+    this.rules = function() {
+        let feetPosition,
+            targetPosition,
+            step = 100;
+
+        if(!this.checkOrder())//检测命令是否为平
+        	return false;
+        this.getPoint(step);
+        if (gameManager.posX - this.posX != 100 || gameManager.posY > 250)
+            return false;
+        feetPosition = this.isViable(); //检查象眼位置
+        if (!feetPosition)
+            return false;
+        return gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
+    }
+}
+
+function RulesOfKnight() {
+    this.getPoint = function() {
+        let X = gameManager.posX,
+            stepX = Math.abs(gameManager.step),
+            stepY = "",
+            temp = Math.abs(X - stepX);
+        
+        if(!this.checkOrder())//检测命令是否为平
+        	return false;
+        gameManager.step > 0 ? stepY += "+" : stepY += "-";
+        temp === 50 ? stepY += 100 : stepY += 50;
+        gameManager.posX = stepX;
+        gameManager.posY += parseInt(stepY);
+    }
+    this.rules = function() {
+        let feetPosition, targetPosition;
+        /*if (!this.getPoint()) //校验步长是否符合规则
+            return false;*/
+        this.getPoint();
+        if (gameManager.posX - this.posX != 50 && gameManager.posX - this.posX != 100)
+            return false;
+        feetPosition = this.isViable();
+        if (!feetPosition)
+            return false;
+        return gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
+    }
+}
+
 function RulesOfKing() {
     let targetPosition,
         sum;
@@ -433,7 +537,7 @@ function RulesOfKing() {
         this.move.call(gameManager);
         targetPosition = gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
         sum = Math.abs(gameManager.posX + gameManager.posY - this.posX - this.posY);
-        if (gameManager.posX < 400 || gameManager.posX > 500 || gameManager.posY < 50 || gameManager.posY > 150)
+        if (gameManager.posX < 200 || gameManager.posX > 300 || gameManager.posY < 50 || gameManager.posY > 150)
             return false;
         if (sum === 50 && targetPosition != false)
             return true;
@@ -470,17 +574,17 @@ function RulesOfRook() { //車、车的父类，定义車的行走规则
 
 function RulesOfSoldier() { //兵、卒的父类，定义卒的行走规则
     let temp;
-    this.rules = function(obj) {
-        if (obj.act === "transverse") {
-            temp = Math.abs(this.posX - obj.step); //步长
+    this.rules = function() {
+        if (gameManager.act === "transverse") {
+            temp = Math.abs(this.posX - gameManager.step); //步长
             if (this.posY < 300 || temp != 50)
                 return false;
-        } else if (obj.act === "forward") {
-            if (obj.step != 50 || obj.posY === "-")
+        } else if (gameManager.act === "forward") {
+            if (gameManager.step != 50 || gameManager.posY === "-")
                 return false;
         }
         this.move.call(gameManager);
-        return obj.checkPoint(obj.posX, obj.posY, obj.color);
+        return gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
     }
 }
 
@@ -488,6 +592,9 @@ RulesOfSoldier.prototype = new SuperSoldier();
 RulesOfRook.prototype = new SuperSoldier();
 RulesOfCannon.prototype = new SuperSoldier();
 RulesOfKing.prototype = new SuperSoldier();
+RulesOfKnight.prototype = new SuperKnight();
+RulesOfBishop.prototype = new SuperKnight();
+RulesOfGuard.prototype = new SuperKnight();
 /*设置读写器
 SuperSoldier.prototype.bindData = function(key, val) {
     Object.defineProperty(this, key, {
@@ -513,31 +620,71 @@ function SubSoldier(soldierObj) { //棋子对象构造函数
 
 function loopSoldierArr(dataSet) { //遍历dataset初始化对象列表
     let temp,
-        obj;
+        obj,
+        protoSoldier = new RulesOfSoldier(),
+        protoRook = new RulesOfRook(),
+        protoCannon = new RulesOfCannon(),
+        protoKing = new RulesOfKing(),
+        protoKnight = new RulesOfKnight(),
+        protoBishop = new RulesOfBishop(),
+        protoGuard = new RulesOfGuard();
 
     for (let i = 0; i < dataSet.length; i++) {
         obj = dataSet[i];
+        temp = new SubSoldier(obj);
         switch (obj.name) {
             case "pawn":
-                SubSoldier.prototype = new RulesOfSoldier();
+                temp.__proto__ = protoSoldier;
                 break;
             case "rook":
-                SubSoldier.prototype = new RulesOfRook();
+                temp.__proto__ = protoRook;
                 break;
             case "cannon":
-                SubSoldier.prototype = new RulesOfCannon();
+                temp.__proto__ = protoCannon;
                 break;
             case "king":
-                SubSoldier.prototype = new RulesOfKing();
+                temp.__proto__ = protoKing;
+                break;
+            case "knight":
+                temp.__proto__ = protoKnight;
+                break;
+            case "bishop":
+                temp.__proto__ = protoBishop;
+                break;
+            case "guard":
+                temp.__proto__ = protoGuard;
+                break;
+        }
+        soldierArr.push(temp);
+        /*switch (obj.name) {
+            case "pawn":
+                temp = Object.create(protoSoldier);
+                break;
+            case "rook":
+                temp = Object.create(protoRook);
+                break;
+            case "cannon":
+                temp = Object.create(protoCannon);
+                break;
+            case "king":
+                temp = Object.create(protoKing);
+                break;
+            case "knight":
+                temp = Object.create(protoKnight);
+                break;
+            case "bishop":
+                temp = Object.create(protoBishop);
+                break;
+            case "guard":
+                temp = Object.create(protoGuard);
                 break;
         }
         temp = new SubSoldier(obj);
-        //inheritPrototype(SubSoldier, RulesOfSoldier);
-        /*if (temp.name === "pawn") {
+        /*inheritPrototype(SubSoldier, RulesOfSoldier);
+        if (temp.name === "pawn") {
             temp.__proto__ = new RulesOfSoldier();//SubSoldier实例的原型指向RulesOfSoldier实例
             //console.log(temp.rules());
         }*/
-        soldierArr.push(temp);
     }
 }
 
@@ -584,7 +731,7 @@ let gameManager = {
     posX: "",
     posY: "",
     act: "",
-    step: "",
+    step: 0,
     history: [],
     init: function() {
         this.getOrder();
@@ -602,17 +749,17 @@ let gameManager = {
                 $("#order").val("");
                 temp = str.split("");
                 obj = _that.handleOrder(temp);
-                obj === undefined ? result = false : result = obj.rules(_that);
+                obj === undefined ? result = false : result = obj.rules();
                 console.log("即将移动到： " + _that.posX + " , " + _that.posY);
-                if (result != false) {
-                    console.log("目标位置检测：" + result);
+                if (result === false) {
+                    console.log("错误的命令！");
+                } else {
                     if (typeof result === "number")
                         _that.dead(result);
                     obj.move();
                     _that.addHistroy(soldierArr); //添加当前的棋子列表到历史记录
                     console.log(obj);
-                } else
-                    console.log("错误的命令！");
+                }
             }
         });
     },
@@ -644,7 +791,7 @@ let gameManager = {
                 result = this.pickUpChessman(soldierArr);
                 if (result === undefined)
                     break;
-                console.log("当前选中棋子：" + result.color + " , " + result.posX + " , " + result.posY);
+                console.log("当前选中棋子颜色：" + result.color + " , X坐标" + result.posX + " , Y坐标" + result.posY);
                 this.posY = result.posY; //存在棋子时保存当前选中棋子的Y坐标
                 console.log(this);
                 break;
@@ -705,7 +852,6 @@ let gameManager = {
 }
 
 let objCanvas = {
-    order: [],
     //对象初始化
     init: function() {
         this.painting();
@@ -848,6 +994,4 @@ let objCanvas = {
 loopSoldierArr(dataSet);
 objCanvas.init();
 gameManager.init();
-(function() {
-    for (let i = 0; i < soldierArr.length; i++) {}
 })()
