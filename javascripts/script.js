@@ -3,7 +3,7 @@
         dataSet = [{
             name: "rook",
             str: "車",
-            color: 1, //0和1分别表示红色黑色，方便选择棋子时互相转化
+            color: 0, //0和1分别表示红色黑色，方便选择棋子时互相转化
             posX: 450,
             posY: 50,
             offsetX: -9,
@@ -14,7 +14,7 @@
         }, {
             name: "rook",
             str: "車",
-            color: 1,
+            color: 0,
             posX: 50,
             posY: 50,
             offsetX: -9,
@@ -25,7 +25,7 @@
         }, {
             name: "knight",
             str: "馬",
-            color: 1,
+            color: 0,
             posX: 100,
             posY: 50,
             offsetX: -9,
@@ -36,7 +36,7 @@
         }, {
             name: "knight",
             str: "馬",
-            color: 1,
+            color: 0,
             posX: 400,
             posY: 50,
             offsetX: -9,
@@ -47,7 +47,7 @@
         }, {
             name: "cannon",
             str: "砲",
-            color: 1,
+            color: 0,
             posX: 100,
             posY: 150,
             offsetX: -9,
@@ -58,7 +58,7 @@
         }, {
             name: "cannon",
             str: "砲",
-            color: 1,
+            color: 0,
             posX: 400,
             posY: 150,
             offsetX: -9,
@@ -69,7 +69,7 @@
         }, {
             name: "bishop",
             str: "象",
-            color: 1,
+            color: 0,
             posX: 150,
             posY: 50,
             offsetX: -9,
@@ -80,7 +80,7 @@
         }, {
             name: "bishop",
             str: "象",
-            color: 1,
+            color: 0,
             posX: 350,
             posY: 50,
             offsetX: -9,
@@ -91,7 +91,7 @@
         }, {
             name: "guard",
             str: "士",
-            color: 1,
+            color: 0,
             posX: 200,
             posY: 50,
             offsetX: -9,
@@ -102,7 +102,7 @@
         }, {
             name: "guard",
             str: "士",
-            color: 1,
+            color: 0,
             posX: 300,
             posY: 50,
             offsetX: -9,
@@ -113,7 +113,7 @@
         }, {
             name: "king",
             str: "将",
-            color: 1,
+            color: 0,
             posX: 250,
             posY: 50,
             offsetX: -9,
@@ -124,7 +124,7 @@
         }, {
             name: "pawn",
             str: "卒",
-            color: 1,
+            color: 0,
             posX: 50,
             posY: 200,
             offsetX: -9,
@@ -135,7 +135,7 @@
         }, {
             name: "pawn",
             str: "卒",
-            color: 1,
+            color: 0,
             posX: 150,
             posY: 200,
             offsetX: -9,
@@ -146,7 +146,7 @@
         }, {
             name: "pawn",
             str: "卒",
-            color: 1,
+            color: 0,
             posX: 250,
             posY: 200,
             offsetX: -9,
@@ -157,7 +157,7 @@
         }, {
             name: "pawn",
             str: "卒",
-            color: 1,
+            color: 0,
             posX: 350,
             posY: 200,
             offsetX: -9,
@@ -168,7 +168,7 @@
         }, {
             name: "pawn",
             str: "卒",
-            color: 1,
+            color: 0,
             posX: 450,
             posY: 200,
             offsetX: -9,
@@ -179,7 +179,7 @@
         }, {
             name: "rook",
             str: "俥",
-            color: 0,
+            color: 1,
             posX: 450,
             posY: 50,
             offsetX: -9,
@@ -190,7 +190,7 @@
         }, {
             name: "rook",
             str: "俥",
-            color: 0,
+            color: 1,
             posX: 50,
             posY: 50,
             offsetX: -9,
@@ -201,7 +201,7 @@
         }, {
             name: "knight",
             str: "傌",
-            color: 0,
+            color: 1,
             posX: 100,
             posY: 50,
             offsetX: -9,
@@ -212,7 +212,7 @@
         }, {
             name: "knight",
             str: "傌",
-            color: 0,
+            color: 1,
             posX: 400,
             posY: 50,
             offsetX: -9,
@@ -223,7 +223,7 @@
         }, {
             name: "cannon",
             str: "炮",
-            color: 0,
+            color: 1,
             posX: 100,
             posY: 150,
             offsetX: -9,
@@ -234,7 +234,7 @@
         }, {
             name: "cannon",
             str: "炮",
-            color: 0,
+            color: 1,
             posX: 400,
             posY: 150,
             offsetX: -9,
@@ -245,7 +245,7 @@
         }, {
             name: "bishop",
             str: "相",
-            color: 0,
+            color: 1,
             posX: 150,
             posY: 50,
             offsetX: -9,
@@ -256,7 +256,7 @@
         }, {
             name: "bishop",
             str: "相",
-            color: 0,
+            color: 1,
             posX: 350,
             posY: 50,
             offsetX: -9,
@@ -267,7 +267,7 @@
         }, {
             name: "guard",
             str: "仕",
-            color: 0,
+            color: 1,
             posX: 200,
             posY: 50,
             offsetX: -9,
@@ -278,7 +278,7 @@
         }, {
             name: "guard",
             str: "仕",
-            color: 0,
+            color: 1,
             posX: 300,
             posY: 50,
             offsetX: -9,
@@ -289,7 +289,7 @@
         }, {
             name: "king",
             str: "帥",
-            color: 0,
+            color: 1,
             posX: 250,
             posY: 50,
             offsetX: -9,
@@ -300,7 +300,7 @@
         }, {
             name: "pawn",
             str: "兵",
-            color: 0,
+            color: 1,
             posX: 50,
             posY: 200,
             offsetX: -9,
@@ -311,7 +311,7 @@
         }, {
             name: "pawn",
             str: "兵",
-            color: 0,
+            color: 1,
             posX: 150,
             posY: 200,
             offsetX: -9,
@@ -322,7 +322,7 @@
         }, {
             name: "pawn",
             str: "兵",
-            color: 0,
+            color: 1,
             posX: 250,
             posY: 200,
             offsetX: -9,
@@ -333,7 +333,7 @@
         }, {
             name: "pawn",
             str: "兵",
-            color: 0,
+            color: 1,
             posX: 350,
             posY: 200,
             offsetX: -9,
@@ -344,7 +344,7 @@
         }, {
             name: "pawn",
             str: "兵",
-            color: 0,
+            color: 1,
             posX: 450,
             posY: 200,
             offsetX: -9,
@@ -726,7 +726,7 @@
         },
         index: 0, //存储命令中的前、后，当同一posX坐标上有两颗同色棋子时，根据命令遍历会得到一个长度为二的棋子数组，根据index值来筛选棋子
         name: "",
-        color: 0, //0表示红色，1表示黑色
+        color: 1, //0表示红色，1表示黑色
         count: 0, //步数游标，当返回查看历史记录时，将根据此游标来判断插入新记录的位置
         posX: "",
         posY: "",
@@ -735,6 +735,7 @@
         history: [],
         init: function() {
             this.bindDOM();
+            this.addHistroy();
         },
         bindDOM: function() {
             let reg = /\s/g,
@@ -773,25 +774,6 @@
                 _that.addHistroy(); //添加当前的棋子列表到历史记录
                 console.log(obj);
             }
-            /*$("#order").keydown(function(event) {
-                if (event.which === 13) {
-                    str = $("#order").val().replace(reg, "");
-                    $("#order").val("");
-                    temp = str.split("");
-                    obj = _that.handleOrder(temp);
-                    obj === undefined ? result = false : result = obj.rules();
-                    console.log("即将移动到： " + _that.posX + " , " + _that.posY);
-                    if (result === false) {
-                        console.log("错误的命令！");
-                    } else {
-                        if (typeof result === "number")
-                            _that.dead(result);
-                        obj.move();
-                        _that.addHistroy(); //添加当前的棋子列表到历史记录
-                        console.log(obj);
-                    }
-                }
-            });*/
         },
         handleOrder: function(arr) { //处理输入命令
             let reg = /(\u524d)|(\u540e)/,
@@ -866,15 +848,17 @@
         },
         addHistroy: function() { //将当前的棋子列表添加到histroy属性
             let temp,
-                arr = soldierArr,
+                arr = [],
                 len = this.history.length;
+
+            $.extend(true, arr, soldierArr);
             if (this.count === len) { //当游标位置在数组末尾时，直接添加
                 this.history.push(arr);
             } else { //当游标位置在数组中间时，删除位于游标之后的部分并添加当前最新的棋子
                 temp = len - this.count;
                 this.history.splice(this.count, temp, arr);
             }
-            objCanvas.painting(this.history[gameManager.count]);
+            objCanvas.painting(soldierArr);
             this.count += 1;
         },
         dead: function(num) {
@@ -882,21 +866,24 @@
         },
         showHistroy: function(num) {
             let temp = this.count + num,
-                len = this.history.length;
-            if (temp === len) {
+                len = this.history.length,
+                index;
+            if (temp === len && num > 0) {
                 return 0;
             } else {
                 this.count += num;
-                objCanvas.painting(gameManager.history[gameManager.count]);
+                index = this.count - 1;
+                soldierArr = gameManager.history[index];
+                objCanvas.painting(soldierArr);
             }
         }
     }
 
     let objCanvas = {
-        //对象初始化
+        /*对象初始化
         init: function() {
             this.painting(soldierArr);
-        },
+        },*/
         //绘制画布
         painting: function(obj) {
             let canvas = document.getElementById("canvas"),
@@ -940,8 +927,8 @@
             }
         },
         soldierDrawing: function(obj) {
-            let radian = (obj.color === 0) ? Math.PI : 0,
-                color = (obj.color === 0) ? "red" : "black";
+            let radian = (obj.color === 1) ? Math.PI : 0,
+                color = (obj.color === 1) ? "red" : "black";
 
             this.ctx.beginPath();
             this.ctx.strokeStyle = "#d1923f";
@@ -968,23 +955,14 @@
         row: function() {
             for (var i = 100; i <= 450; i += 50) {
                 this.lineDrawing(50, i, 450, i);
-                /*this.ctx.beginPath();
-                this.ctx.moveTo(50, i);
-                this.ctx.lineTo(450, i);
-                this.ctx.stroke();*/
             }
         },
         //棋盘列
         cols: function() {
             for (var i = 100; i <= 400; i += 50) {
                 this.lineDrawing(i, 50, i, 500);
-                /*this.ctx.beginPath();
-                this.ctx.moveTo(i, 50);
-                this.ctx.lineTo(i, 500);
-                this.ctx.stroke();*/
             }
             //清除指定的矩形区域
-            //this.ctx.clearRect(5, 402,795, 95);
             this.ctx.clearRect(52, 252, 396, 46);
             //斜线
             this.lineDrawing(200, 50, 300, 150);
@@ -1024,6 +1002,5 @@
     };
 
     loopSoldierArr(dataSet);
-    objCanvas.init();
     gameManager.init();
 })()
