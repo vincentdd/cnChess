@@ -3,7 +3,7 @@
         dataSet = [{
             name: "rook",
             str: "車",
-            color: 1, //0和1分别表示红色黑色，方便选择棋子时互相转化
+            color: 0, //0和1分别表示红色黑色，方便选择棋子时互相转化
             posX: 450,
             posY: 50,
             offsetX: -9,
@@ -14,7 +14,7 @@
         }, {
             name: "rook",
             str: "車",
-            color: 1,
+            color: 0,
             posX: 50,
             posY: 50,
             offsetX: -9,
@@ -25,7 +25,7 @@
         }, {
             name: "knight",
             str: "馬",
-            color: 1,
+            color: 0,
             posX: 100,
             posY: 50,
             offsetX: -9,
@@ -36,7 +36,7 @@
         }, {
             name: "knight",
             str: "馬",
-            color: 1,
+            color: 0,
             posX: 400,
             posY: 50,
             offsetX: -9,
@@ -47,7 +47,7 @@
         }, {
             name: "cannon",
             str: "砲",
-            color: 1,
+            color: 0,
             posX: 100,
             posY: 150,
             offsetX: -9,
@@ -58,7 +58,7 @@
         }, {
             name: "cannon",
             str: "砲",
-            color: 1,
+            color: 0,
             posX: 400,
             posY: 150,
             offsetX: -9,
@@ -69,7 +69,7 @@
         }, {
             name: "bishop",
             str: "象",
-            color: 1,
+            color: 0,
             posX: 150,
             posY: 50,
             offsetX: -9,
@@ -80,7 +80,7 @@
         }, {
             name: "bishop",
             str: "象",
-            color: 1,
+            color: 0,
             posX: 350,
             posY: 50,
             offsetX: -9,
@@ -91,7 +91,7 @@
         }, {
             name: "guard",
             str: "士",
-            color: 1,
+            color: 0,
             posX: 200,
             posY: 50,
             offsetX: -9,
@@ -102,7 +102,7 @@
         }, {
             name: "guard",
             str: "士",
-            color: 1,
+            color: 0,
             posX: 300,
             posY: 50,
             offsetX: -9,
@@ -113,7 +113,7 @@
         }, {
             name: "king",
             str: "将",
-            color: 1,
+            color: 0,
             posX: 250,
             posY: 50,
             offsetX: -9,
@@ -124,7 +124,7 @@
         }, {
             name: "pawn",
             str: "卒",
-            color: 1,
+            color: 0,
             posX: 50,
             posY: 200,
             offsetX: -9,
@@ -135,7 +135,7 @@
         }, {
             name: "pawn",
             str: "卒",
-            color: 1,
+            color: 0,
             posX: 150,
             posY: 200,
             offsetX: -9,
@@ -146,7 +146,7 @@
         }, {
             name: "pawn",
             str: "卒",
-            color: 1,
+            color: 0,
             posX: 250,
             posY: 200,
             offsetX: -9,
@@ -157,7 +157,7 @@
         }, {
             name: "pawn",
             str: "卒",
-            color: 1,
+            color: 0,
             posX: 350,
             posY: 200,
             offsetX: -9,
@@ -168,7 +168,7 @@
         }, {
             name: "pawn",
             str: "卒",
-            color: 1,
+            color: 0,
             posX: 450,
             posY: 200,
             offsetX: -9,
@@ -179,7 +179,7 @@
         }, {
             name: "rook",
             str: "俥",
-            color: 0,
+            color: 1,
             posX: 450,
             posY: 50,
             offsetX: -9,
@@ -190,7 +190,7 @@
         }, {
             name: "rook",
             str: "俥",
-            color: 0,
+            color: 1,
             posX: 50,
             posY: 50,
             offsetX: -9,
@@ -201,7 +201,7 @@
         }, {
             name: "knight",
             str: "傌",
-            color: 0,
+            color: 1,
             posX: 100,
             posY: 50,
             offsetX: -9,
@@ -212,7 +212,7 @@
         }, {
             name: "knight",
             str: "傌",
-            color: 0,
+            color: 1,
             posX: 400,
             posY: 50,
             offsetX: -9,
@@ -223,7 +223,7 @@
         }, {
             name: "cannon",
             str: "炮",
-            color: 0,
+            color: 1,
             posX: 100,
             posY: 150,
             offsetX: -9,
@@ -234,7 +234,7 @@
         }, {
             name: "cannon",
             str: "炮",
-            color: 0,
+            color: 1,
             posX: 400,
             posY: 150,
             offsetX: -9,
@@ -245,7 +245,7 @@
         }, {
             name: "bishop",
             str: "相",
-            color: 0,
+            color: 1,
             posX: 150,
             posY: 50,
             offsetX: -9,
@@ -256,7 +256,7 @@
         }, {
             name: "bishop",
             str: "相",
-            color: 0,
+            color: 1,
             posX: 350,
             posY: 50,
             offsetX: -9,
@@ -267,7 +267,7 @@
         }, {
             name: "guard",
             str: "仕",
-            color: 0,
+            color: 1,
             posX: 200,
             posY: 50,
             offsetX: -9,
@@ -278,7 +278,7 @@
         }, {
             name: "guard",
             str: "仕",
-            color: 0,
+            color: 1,
             posX: 300,
             posY: 50,
             offsetX: -9,
@@ -289,7 +289,7 @@
         }, {
             name: "king",
             str: "帥",
-            color: 0,
+            color: 1,
             posX: 250,
             posY: 50,
             offsetX: -9,
@@ -300,7 +300,7 @@
         }, {
             name: "pawn",
             str: "兵",
-            color: 0,
+            color: 1,
             posX: 50,
             posY: 200,
             offsetX: -9,
@@ -311,7 +311,7 @@
         }, {
             name: "pawn",
             str: "兵",
-            color: 0,
+            color: 1,
             posX: 150,
             posY: 200,
             offsetX: -9,
@@ -322,7 +322,7 @@
         }, {
             name: "pawn",
             str: "兵",
-            color: 0,
+            color: 1,
             posX: 250,
             posY: 200,
             offsetX: -9,
@@ -333,7 +333,7 @@
         }, {
             name: "pawn",
             str: "兵",
-            color: 0,
+            color: 1,
             posX: 350,
             posY: 200,
             offsetX: -9,
@@ -344,7 +344,7 @@
         }, {
             name: "pawn",
             str: "兵",
-            color: 0,
+            color: 1,
             posX: 450,
             posY: 200,
             offsetX: -9,
@@ -353,29 +353,30 @@
             circleR: 17,
             fontSize: 20
         }]
-
+    /*
     function inheritPrototype(subType, superType) {
         let prototype = Object(superType.prototype);
         prototype.constructor = subType;
         subType.prototype = prototype;
     }
 
-    /*
-
     inheritPrototype(RulesOfSoldier, SuperSoldier); //从超类上继承行走方法
     */
-    function SuperKnight() { //斜向行走棋子（马、象、士）的父类，定义此类棋子的移动方法
+    //斜向行走棋子（马、象、士）的父类，定义此类棋子的移动方法
+    function SuperKnight() {
         this.move = function() {
             this.posX = gameManager.posX;
             this.posY = gameManager.posY;
         }
+        //马、象、士没有平命令
         this.checkOrder = function() {
             if (gameManager.act === "transverse")
                 return false;
             else
                 return true;
         }
-        this.getPoint = function(num) { //士、象的计算目标坐标方法，Knight对象继承此实例是，自身所有的同名方法会覆盖此方法
+        //士、象的计算目标坐标方法，Knight对象继承此实例是，自身所有的同名方法会覆盖此方法
+        this.getPoint = function(num) {
             let temp = gameManager.step,
                 sign = "";
 
@@ -383,13 +384,19 @@
             gameManager.posX = parseInt(temp);
             gameManager.posY += parseInt(sign[0] + num);
         }
-        this.toStringWithSign = function(num) { //number转带符号string
-            let str = "";
-            num > 0 ? str = "+" : str = "-";
-            str += Math.abs(num);
-            return str;
+        //number转带符号string
+        this.toStringWithSign = function(num) {
+            let str = "";											//初始化空字符串
+            num > 0 ? str = "+" : str = "-";						//判断字符串符号
+            str += Math.abs(num);									//符号 + 绝对值
+            return str;												//返回带符号string
         }
-        this.isViable = function() { //校验马脚,
+        //校验马脚，象眼，马脚、象眼的检测共同点是棋子移动方向上，长、短轴方向各减一格，即为校验点，
+        //以上检测思路的一个问题是X、Y坐标可能要各自加减相应的步长来表示棋子的移动，所以这个方法会将
+        //两个坐标轴方向上的变化量存入一个数组，再将数组内的两个带符号Number类型值转化成带符号String
+        //类型，然后将数值绝对值分别减去一个步长，再拼接上符号、转化成Number类型，将原坐标分别加上这
+        //个值，得到的既是象眼、马脚坐标
+        this.isViable = function() {
             let feetPosX,
                 feetPosY,
                 result,
@@ -400,9 +407,9 @@
             arr.push(gameManager.posY - this.posY);
 
             let roots = arr.map(function(x) {
-                let temp = _that.toStringWithSign(x);
-                temp = parseInt(temp[0] + (Math.abs(temp) - 50));
-                return temp;
+                let temp = _that.toStringWithSign(x);				//获取x的带符号string格式
+                temp = parseInt(temp[0] + (Math.abs(temp) - 50));	//temp = x绝对值 - 50
+                return temp;										
             });
 
             feetPosX += roots[0];
@@ -414,8 +421,8 @@
                 return false;
         }
     }
-
-    function SuperSoldier() { //直向行走棋子（車、炮、将、卒）的父类，定义此类棋子的移动方法
+	//直向行走棋子（車、炮、将、卒）的父类，定义此类棋子的移动方法
+    function SuperSoldier() {
         let _that = this;
         this.forward = function(num) { //进、退
             this.posY += num;
@@ -432,13 +439,14 @@
         this.move = function() {
             gameManager.act === "forward" ? _that.forward.call(this, gameManager.step) : _that.transverse.call(this, gameManager.step);
         }
-        this.isRoadClear = function(startX, startY, endX, endY) { //检测直线移动路径上是否存在棋子，并返回数量
+        //检测直线移动路径上是否存在棋子，并返回数量。水平移动和竖直移动分别需要检验X轴坐标和Y轴坐标相等的情况，暂时没有想到更好的实现方式，这里应该还有优化的空间，以后补
+        this.isRoadClear = function(startX, startY, endX, endY) {
             let max,
                 min,
                 X,
                 Y,
                 count = 0;
-            if (startX === endX) {
+            if (startX === endX) {//竖直移动
                 min = Math.min(startY, endY);
                 max = Math.max(startY, endY);
                 for (let i = 0, len = soldierArr.length; i < len; i++) {
@@ -452,7 +460,7 @@
                     if (X === startX && Y > min && Y < max)
                         count += 1;
                 }
-            } else {
+            } else {//水平移动
                 min = Math.min(startX, endX);
                 max = Math.max(startX, endX);
                 for (let i = 0, len = soldierArr.length; i < len; i++) {
@@ -470,7 +478,7 @@
             return count;
         }
     }
-
+    //士规则，主要是士的命令、移动范围判定
     function RulesOfGuard() {
         this.rules = function() {
             let step = 50;
@@ -482,7 +490,7 @@
             return gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
         }
     }
-
+    //象移动规则
     function RulesOfBishop() {
         this.rules = function() {
             let feetPosition,
@@ -500,7 +508,7 @@
             return gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
         }
     }
-
+	//马移动规则
     function RulesOfKnight() {
         this.getPoint = function() {
             let X = gameManager.posX,
@@ -523,12 +531,12 @@
             if (gameManager.posX - this.posX != 50 && gameManager.posX - this.posX != 100)
                 return false;
             feetPosition = this.isViable();
-            if (!feetPosition)
+            if (!feetPosition)//检查马脚
                 return false;
             return gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
         }
     }
-
+    //将移动规则
     function RulesOfKing() {
         let targetPosition,
             sum;
@@ -536,11 +544,13 @@
         this.rules = function() {
             this.move.call(gameManager);
             targetPosition = gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
-            sum = Math.abs(gameManager.posX + gameManager.posY - this.posX - this.posY);
+            sum = Math.abs(gameManager.posX + gameManager.posY - this.posX - this.posY);//步长
             if (gameManager.posX < 200 || gameManager.posX > 300 || gameManager.posY < 50 || gameManager.posY > 150)
                 return false;
-            if (sum === 50 && targetPosition != false)
-                return true;
+            if (sum != 50 || targetPosition === false)
+                return false;
+            else
+            	return true;
         }
     }
 
@@ -612,8 +622,9 @@
 
     function SubSoldier(soldierObj) { //棋子对象构造函数
         let val;
+
         for (let key in soldierObj) {
-            val = soldierObj[key]
+            val = soldierObj[key];
             this[key] = val;
         }
     }
@@ -655,7 +666,8 @@
                     temp.__proto__ = protoGuard;
                     break;
             }
-            soldierArr.push(temp);
+
+            soldierArr = soldierArr.concat(temp);
             /*switch (obj.name) {
                 case "pawn":
                     temp = Object.create(protoSoldier);
@@ -726,7 +738,7 @@
         },
         index: 0, //存储命令中的前、后，当同一posX坐标上有两颗同色棋子时，根据命令遍历会得到一个长度为二的棋子数组，根据index值来筛选棋子
         name: "",
-        color: 0, //0表示红色，1表示黑色
+        color: 1, //0表示红色，1表示黑色
         count: 0, //步数游标，当返回查看历史记录时，将根据此游标来判断插入新记录的位置
         posX: "",
         posY: "",
@@ -735,6 +747,7 @@
         history: [],
         init: function() {
             this.bindDOM();
+            this.addHistroy();
         },
         bindDOM: function() {
             let reg = /\s/g,
@@ -773,25 +786,6 @@
                 _that.addHistroy(); //添加当前的棋子列表到历史记录
                 console.log(obj);
             }
-            /*$("#order").keydown(function(event) {
-                if (event.which === 13) {
-                    str = $("#order").val().replace(reg, "");
-                    $("#order").val("");
-                    temp = str.split("");
-                    obj = _that.handleOrder(temp);
-                    obj === undefined ? result = false : result = obj.rules();
-                    console.log("即将移动到： " + _that.posX + " , " + _that.posY);
-                    if (result === false) {
-                        console.log("错误的命令！");
-                    } else {
-                        if (typeof result === "number")
-                            _that.dead(result);
-                        obj.move();
-                        _that.addHistroy(); //添加当前的棋子列表到历史记录
-                        console.log(obj);
-                    }
-                }
-            });*/
         },
         handleOrder: function(arr) { //处理输入命令
             let reg = /(\u524d)|(\u540e)/,
@@ -866,15 +860,21 @@
         },
         addHistroy: function() { //将当前的棋子列表添加到histroy属性
             let temp,
-                arr = soldierArr,
+                obj,
+                arr = [],
                 len = this.history.length;
+
+            console.log(soldierArr[0].name);
+            arr = soldierArr.map(function(x){
+            	return gameManager.deepClone(x);
+            });
             if (this.count === len) { //当游标位置在数组末尾时，直接添加
                 this.history.push(arr);
             } else { //当游标位置在数组中间时，删除位于游标之后的部分并添加当前最新的棋子
                 temp = len - this.count;
                 this.history.splice(this.count, temp, arr);
             }
-            objCanvas.painting(this.history[gameManager.count]);
+            objCanvas.painting(soldierArr);
             this.count += 1;
         },
         dead: function(num) {
@@ -882,21 +882,45 @@
         },
         showHistroy: function(num) {
             let temp = this.count + num,
-                len = this.history.length;
-            if (temp === len) {
+                len = this.history.length,
+                index;
+            if (temp === len && num > 0) {
                 return 0;
             } else {
                 this.count += num;
-                objCanvas.painting(gameManager.history[gameManager.count]);
+                index = this.count - 1;
+                soldierArr = gameManager.history[index];
+                objCanvas.painting(soldierArr);
             }
+        },
+        deepClone: function(initalObj, finalObj) {
+            let obj = finalObj || {};
+            for (let i in initalObj) {
+                let prop = initalObj[i];
+
+                // 避免相互引用对象导致死循环，如initalObj.a = initalObj的情况
+                if (prop === obj) {
+                    continue;
+                }
+
+                if (typeof prop === 'object') {
+                    obj[i] = (prop.constructor === Array) ? [] : Object.create(prop);
+                } else {
+                    obj[i] = prop;
+                }
+            }
+            return obj;
+        },
+        win: function(){
+
         }
     }
 
     let objCanvas = {
-        //对象初始化
+        /*对象初始化
         init: function() {
             this.painting(soldierArr);
-        },
+        },*/
         //绘制画布
         painting: function(obj) {
             let canvas = document.getElementById("canvas"),
@@ -934,14 +958,16 @@
             //开始绘制棋子
             this.loopArr(obj);
         },
+        //循环棋子队列
         loopArr: function(arr) {
             for (var i = 0; i < arr.length; i++) {
                 this.soldierDrawing(arr[i]);
             }
         },
+        //绘制棋子
         soldierDrawing: function(obj) {
-            let radian = (obj.color === 0) ? Math.PI : 0,
-                color = (obj.color === 0) ? "red" : "black";
+            let radian = (obj.color === 1) ? Math.PI : 0,
+                color = (obj.color === 1) ? "red" : "black";
 
             this.ctx.beginPath();
             this.ctx.strokeStyle = "#d1923f";
@@ -968,23 +994,14 @@
         row: function() {
             for (var i = 100; i <= 450; i += 50) {
                 this.lineDrawing(50, i, 450, i);
-                /*this.ctx.beginPath();
-                this.ctx.moveTo(50, i);
-                this.ctx.lineTo(450, i);
-                this.ctx.stroke();*/
             }
         },
         //棋盘列
         cols: function() {
             for (var i = 100; i <= 400; i += 50) {
                 this.lineDrawing(i, 50, i, 500);
-                /*this.ctx.beginPath();
-                this.ctx.moveTo(i, 50);
-                this.ctx.lineTo(i, 500);
-                this.ctx.stroke();*/
             }
             //清除指定的矩形区域
-            //this.ctx.clearRect(5, 402,795, 95);
             this.ctx.clearRect(52, 252, 396, 46);
             //斜线
             this.lineDrawing(200, 50, 300, 150);
@@ -1024,6 +1041,5 @@
     };
 
     loopSoldierArr(dataSet);
-    objCanvas.init();
     gameManager.init();
 })()
