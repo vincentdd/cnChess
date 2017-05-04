@@ -884,7 +884,7 @@
             let temp = this.count + num,
                 len = this.history.length,
                 index;
-            if (temp === len && num > 0) {
+            if ((temp === len && num > 0) || temp === 0) {
                 return 0;
             } else {
                 this.count += num;
