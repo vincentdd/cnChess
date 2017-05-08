@@ -353,52 +353,52 @@
             circleR: 17,
             fontSize: 20
         }]
-    /*
-    function inheritPrototype(subType, superType) {
-        let prototype = Object(superType.prototype);
-        prototype.constructor = subType;
-        subType.prototype = prototype;
-    }
+        /*
+        function inheritPrototype(subType, superType) {
+            let prototype = Object(superType.prototype);
+            prototype.constructor = subType;
+            subType.prototype = prototype;
+        }
 
-    inheritPrototype(RulesOfSoldier, SuperSoldier); //从超类上继承行走方法
-    */
-    //斜向行走棋子（马、象、士）的父类，定义此类棋子的移动方法
+        inheritPrototype(RulesOfSoldier, SuperSoldier); //从超类上继承行走方法
+        */
+        //斜向行走棋子（马、象、士）的父类，定义此类棋子的移动方法
     function SuperKnight() {
         this.move = function() {
-            this.posX = gameManager.posX;
-            this.posY = gameManager.posY;
-        }
-        //马、象、士没有平命令
+                this.posX = gameManager.posX;
+                this.posY = gameManager.posY;
+            }
+            //马、象、士没有平命令
         this.checkOrder = function() {
-            if (gameManager.act === "transverse")
-                return false;
-            else
-                return true;
-        }
-        //士、象的计算目标坐标方法，Knight对象继承此实例是，自身所有的同名方法会覆盖此方法
+                if (gameManager.act === "transverse")
+                    return false;
+                else
+                    return true;
+            }
+            //士、象的计算目标坐标方法，Knight对象继承此实例是，自身所有的同名方法会覆盖此方法
         this.getPoint = function(num) {
-            let temp = gameManager.step,
-                sign = "";
+                let temp = gameManager.step,
+                    sign = "";
 
-            sign = this.toStringWithSign(temp);
-            gameManager.posX = parseInt(temp);
-            gameManager.posY += parseInt(sign[0] + num);
-        }
-        //number转带符号string
+                sign = this.toStringWithSign(temp);
+                gameManager.posX = parseInt(temp);
+                gameManager.posY += parseInt(sign[0] + num);
+            }
+            //number转带符号string
         this.toStringWithSign = function(num) {
-            let str = "";											//初始化空字符串
-            num > 0 ? str = "+" : str = "-";						//判断字符串符号
-            str += Math.abs(num);									//符号 + 绝对值
-            return str;												//返回带符号string
-        }
-        //校验马脚，象眼，马脚、象眼的检测共同点是棋子移动方向上，长、短轴方向各减一格，即为校验点，
-        //以上检测思路的一个问题是X、Y坐标可能要各自加减相应的步长来表示棋子的移动，所以这个方法会将
-        //两个坐标轴方向上的变化量存入一个数组，再将数组内的两个带符号Number类型值转化成带符号String
-        //类型，然后将数值绝对值分别减去一个步长，再拼接上符号、转化成Number类型，将原坐标分别加上这
-        //个值，得到的既是象眼、马脚坐标
+                let str = ""; //初始化空字符串
+                num > 0 ? str = "+" : str = "-"; //判断字符串符号
+                str += Math.abs(num); //符号 + 绝对值
+                return str; //返回带符号string
+            }
+            //校验马脚，象眼，马脚、象眼的检测共同点是棋子移动方向上，长、短轴方向各减一格，即为校验点，
+            //以上检测思路的一个问题是X、Y坐标可能要各自加减相应的步长来表示棋子的移动，所以这个方法会将
+            //两个坐标轴方向上的变化量存入一个数组，再将数组内的两个带符号Number类型值转化成带符号String
+            //类型，然后将数值绝对值分别减去一个步长，再拼接上符号、转化成Number类型，将原坐标分别加上这
+            //个值，得到的既是象眼、马脚坐标
         this.isViable = function() {
-            let feetPosX,
-                feetPosY,
+            let feetPosX = this.posX,
+                feetPosY = this.posY,
                 result,
                 _that = this,
                 arr = [];
@@ -407,9 +407,9 @@
             arr.push(gameManager.posY - this.posY);
 
             let roots = arr.map(function(x) {
-                let temp = _that.toStringWithSign(x);				//获取x的带符号string格式
-                temp = parseInt(temp[0] + (Math.abs(temp) - 50));	//temp = x绝对值 - 50
-                return temp;										
+                let temp = _that.toStringWithSign(x); //获取x的带符号string格式
+                temp = parseInt(temp[0] + (Math.abs(temp) - 50)); //temp = x绝对值 - 50
+                return temp;
             });
 
             feetPosX += roots[0];
@@ -421,7 +421,7 @@
                 return false;
         }
     }
-	//直向行走棋子（車、炮、将、卒）的父类，定义此类棋子的移动方法
+    //直向行走棋子（車、炮、将、卒）的父类，定义此类棋子的移动方法
     function SuperSoldier() {
         let _that = this;
         this.forward = function(num) { //进、退
@@ -437,16 +437,16 @@
             gameManager.posX、gameManager.posY两个属相上
             **********************************************/
         this.move = function() {
-            gameManager.act === "forward" ? _that.forward.call(this, gameManager.step) : _that.transverse.call(this, gameManager.step);
-        }
-        //检测直线移动路径上是否存在棋子，并返回数量。水平移动和竖直移动分别需要检验X轴坐标和Y轴坐标相等的情况，暂时没有想到更好的实现方式，这里应该还有优化的空间，以后补
+                gameManager.act === "forward" ? _that.forward.call(this, gameManager.step) : _that.transverse.call(this, gameManager.step);
+            }
+            //检测直线移动路径上是否存在棋子，并返回数量。水平移动和竖直移动分别需要检验X轴坐标和Y轴坐标相等的情况，暂时没有想到更好的实现方式，这里应该还有优化的空间，以后补
         this.isRoadClear = function(startX, startY, endX, endY) {
             let max,
                 min,
                 X,
                 Y,
                 count = 0;
-            if (startX === endX) {//竖直移动
+            if (startX === endX) { //竖直移动
                 min = Math.min(startY, endY);
                 max = Math.max(startY, endY);
                 for (let i = 0, len = soldierArr.length; i < len; i++) {
@@ -460,7 +460,7 @@
                     if (X === startX && Y > min && Y < max)
                         count += 1;
                 }
-            } else {//水平移动
+            } else { //水平移动
                 min = Math.min(startX, endX);
                 max = Math.max(startX, endX);
                 for (let i = 0, len = soldierArr.length; i < len; i++) {
@@ -508,7 +508,7 @@
             return gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
         }
     }
-	//马移动规则
+    //马移动规则
     function RulesOfKnight() {
         this.getPoint = function() {
             let X = gameManager.posX,
@@ -528,10 +528,10 @@
             /*if (!this.getPoint()) //校验步长是否符合规则
                 return false;*/
             this.getPoint();
-            if (gameManager.posX - this.posX != 50 && gameManager.posX - this.posX != 100)
+            if (Math.abs(gameManager.posX - this.posX) != 50 && Math.abs(gameManager.posX - this.posX != 100))
                 return false;
             feetPosition = this.isViable();
-            if (!feetPosition)//检查马脚
+            if (!feetPosition) //检查马脚
                 return false;
             return gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
         }
@@ -544,17 +544,17 @@
         this.rules = function() {
             this.move.call(gameManager);
             targetPosition = gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
-            sum = Math.abs(gameManager.posX + gameManager.posY - this.posX - this.posY);//步长
+            sum = Math.abs(gameManager.posX + gameManager.posY - this.posX - this.posY); //步长
             if (gameManager.posX < 200 || gameManager.posX > 300 || gameManager.posY < 50 || gameManager.posY > 150)
                 return false;
             if (sum != 50 || targetPosition === false)
                 return false;
             else
-            	return true;
+                return true;
         }
     }
 
-    function RulesOfCannon() {
+    function RulesOfCannon() { //炮的父类，定义炮的行走规则
         let chessmanOnTheRoad,
             targetPosition;
 
@@ -576,9 +576,11 @@
         let result;
         this.rules = function() {
             this.move.call(gameManager);
-            this.isRoadClear(this.posX, this.posX, gameManager.posX, gameManager.posY) === 0 ? result = true : result = false;
+            this.isRoadClear(this.posX, this.posY, gameManager.posX, gameManager.posY) === 0 ? result = true : result = false;
             if (result)
                 return gameManager.checkPoint(gameManager.posX, gameManager.posY, gameManager.color);
+            else
+                return result;
         }
     }
 
@@ -668,49 +670,20 @@
             }
 
             soldierArr = soldierArr.concat(temp);
-            /*switch (obj.name) {
-                case "pawn":
-                    temp = Object.create(protoSoldier);
-                    break;
-                case "rook":
-                    temp = Object.create(protoRook);
-                    break;
-                case "cannon":
-                    temp = Object.create(protoCannon);
-                    break;
-                case "king":
-                    temp = Object.create(protoKing);
-                    break;
-                case "knight":
-                    temp = Object.create(protoKnight);
-                    break;
-                case "bishop":
-                    temp = Object.create(protoBishop);
-                    break;
-                case "guard":
-                    temp = Object.create(protoGuard);
-                    break;
-            }
-            temp = new SubSoldier(obj);
-            /*inheritPrototype(SubSoldier, RulesOfSoldier);
-            if (temp.name === "pawn") {
-                temp.__proto__ = new RulesOfSoldier();//SubSoldier实例的原型指向RulesOfSoldier实例
-                //console.log(temp.rules());
-            }*/
         }
     }
 
     let gameManager = {
         objStep: {
-            "一": 50,
-            "二": 100,
-            "三": 150,
-            "四": 200,
-            "五": 250,
-            "六": 300,
-            "七": 350,
-            "八": 400,
-            "九": 450
+            "一1１": 50,
+            "二2２": 100,
+            "三3３": 150,
+            "四4４": 200,
+            "五5５": 250,
+            "六6６": 300,
+            "七7７": 350,
+            "八8８": 400,
+            "九9９": 450
         },
         objBehave: {
             "进": "forward",
@@ -766,6 +739,7 @@
                 temp = parseInt(temp);
                 gameManager.showHistroy(temp);
             })
+            //$("#notice").
         },
         getOrder: function(str) {
             let _that = this,
@@ -779,18 +753,27 @@
             console.log("即将移动到： " + _that.posX + " , " + _that.posY);
             if (result === false) {
                 console.log("错误的命令！");
+                $("#notice").show(300);
             } else {
                 if (typeof result === "number")
                     _that.dead(result);
                 obj.move();
                 _that.addHistroy(); //添加当前的棋子列表到历史记录
                 console.log(obj);
+                $("#notice").hide(300);
+            }
+        },
+        getStep: function(arr, str) {
+            for (let key in arr) {
+                if (key.indexOf(str) != -1)
+                    return arr[key];
             }
         },
         handleOrder: function(arr) { //处理输入命令
             let reg = /(\u524d)|(\u540e)/,
                 temp,
                 val,
+                valOfStep,
                 result;
             switch (arr.length) {
                 case 5:
@@ -799,18 +782,25 @@
                 case 4:
                     console.log(arr);
                     this.name = this.objName[arr[0]]; //获取命令中的棋子名称
-                    this.posX /*atPosX*/ = this.objStep[arr[1]]; //获取命令中的X轴位置
+                    /*Object.keys(this.objStep).filter(function(element) {
+                        if (element.indexOf(arr[1]) != -1)
+                            return gameManager.objStep[element];
+                    });*/
+                    this.posX = this.getStep(this.objStep, arr[1]); //获取命令中的X轴位置
                     this.act = this.objBehave[arr[2]]; //获取命令动作（进、退、平）
-                    this.color = this.history.length % 2; //根据历史步数来判断当前移动的棋子颜色
+                    this.color = this.count % 2; //根据历史步数来判断当前移动的棋子颜色
                     if (arr[2] === "退") {
                         val = "-";
                     } else if (arr[2] === "平" || arr[2] === "进")
                         val = "";
-                    if (this.name === undefined || this.posX /*atPosX*/ === undefined || this.act === undefined || this.step === undefined) {
+                    if (this.name === undefined || this.posX === undefined || this.act === undefined || this.step === undefined) {
                         result = undefined;
                         break;
                     }
-                    val += this.objStep[arr[3]];
+                    valOfStep = this.getStep(this.objStep, arr[3]);
+                    if (valOfStep === undefined)
+                        break;
+                    val += valOfStep;
                     this.step = parseInt(val);
                     result = this.pickUpChessman(soldierArr);
                     if (result === undefined)
@@ -828,7 +818,7 @@
             let temp = [],
                 result;
             for (var i = 0; i < arr.length; i++) {
-                if (this.name === arr[i].name && this.posX /*atPosX*/ === arr[i].posX && this.color === arr[i].color) {
+                if (this.name === arr[i].name && this.posX === arr[i].posX && this.color === arr[i].color) {
                     temp.push(arr[i]); //将匹配对象入栈
                 }
             }
@@ -864,9 +854,8 @@
                 arr = [],
                 len = this.history.length;
 
-            console.log(soldierArr[0].name);
-            arr = soldierArr.map(function(x){
-            	return gameManager.deepClone(x);
+            arr = soldierArr.map(function(x) {
+                return gameManager.deepClone(x);
             });
             if (this.count === len) { //当游标位置在数组末尾时，直接添加
                 this.history.push(arr);
@@ -911,7 +900,7 @@
             }
             return obj;
         },
-        win: function(){
+        win: function() {
 
         }
     }

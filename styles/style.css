@@ -3,13 +3,17 @@
     max-width: 400px;
 }
 
+.input-text{
+	height: 8rem;
+}
+
 #notice {
-	display: none;
+    display: none;
     color: red;
 }
 
-#previous-next{
-	margin-top: 3rem;
-	display: flex;
-	justify-content: space-between;
+#previous-next {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
 }
