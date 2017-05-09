@@ -19,12 +19,12 @@ body {
     margin-bottom: 1rem;
 }
 
-#previous-next button {
+#previous-next .row button {
     width: 35%;
     text-align: center;
 }
 
-#previous-next {
+#previous-next .row {
     margin-top: 1rem;
     display: -webkit-box;
     display: -webkit-flex;
@@ -57,13 +57,13 @@ body {
     .input-text #order {
         width: 100%;
     }
-    #previous-next button {
+    #previous-next .row button {
         color: #fff;
         background-color: #286090;
         border-color: #204d74;
         width: 35%;
     }
-    #previous-next {
+    #previous-next .row {
         margin-top: 3rem;
         display: -webkit-box;
         display: -ms-flexbox;
