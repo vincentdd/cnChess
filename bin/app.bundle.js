@@ -797,12 +797,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     gameManager.getOrder(str);
                 }
             });
-            $(document).on("click", "button", function () {
+            $("#previous-next").on("click", "button", function () {
                 temp = $(this).attr("data-val");
                 temp = parseInt(temp);
                 gameManager.showHistroy(temp);
             });
             $("#need-help").on("touchstart mousedown", function () {
+                $("#help").stop(true);
                 $("#help").animate({
                     top: "100px"
                 }, 600);

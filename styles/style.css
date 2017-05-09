@@ -62,7 +62,6 @@ body {
         background-color: #286090;
         border-color: #204d74;
         width: 35%;
-        height: 4rem;
     }
     #previous-next {
         margin-top: 3rem;
@@ -78,11 +77,12 @@ body {
     #need-help {
         display: inline-block;
         position: fixed;
-        width: 8rem;
+        width: 10rem;
         height: 4rem;
         border-radius: 2rem;
-        background-color: blue;
-        color: white;
+        border-style: none;
+        background-color: #286090;
+        color: #fff;
         line-height: 4rem;
         text-align: center;
         text-decoration: none;
