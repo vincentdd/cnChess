@@ -802,7 +802,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 temp = parseInt(temp);
                 gameManager.showHistroy(temp);
             });
-            //$("#notice").
+            $("#need-help").on("touchstart mousedown", function () {
+                $("#help").animate({
+                    top: "100px"
+                }, 600);
+            });
+            $("#need-help").on("touchend mouseup", function () {
+                $("#help").animate({
+                    top: "-200px"
+                }, 600);
+            });
         },
         getOrder: function getOrder(str) {
             var _that = this,
@@ -936,7 +945,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             var temp = this.count + num,
                 len = this.history.length,
                 index = void 0;
-            if (temp === len && num > 0 || temp === 0) {
+            if (temp > len && num > 0 || temp === 0) {
                 return 0;
             } else {
                 this.count += num;

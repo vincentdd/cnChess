@@ -1,10 +1,9 @@
-#order {
-    width: 100%;
-    max-width: 400px;
+body {
+    position: relative;
 }
 
-.input-text {
-    height: 6rem;
+#order {
+    width: 100%;
 }
 
 #notice {
@@ -12,16 +11,95 @@
     color: red;
 }
 
+#need-help {
+    display: none;
+}
+
+.input-text input {
+    margin-bottom: 1rem;
+}
+
+#previous-next button {
+    width: 35%;
+    text-align: center;
+}
+
 #previous-next {
-    margin-top: 3rem;
+    margin-top: 1rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
     justify-content: space-between;
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+#help p {
+    text-indent: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .input-text {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .input-text>div {
+        width: 80%;
+    }
+    .input-text #order {
+        width: 100%;
+    }
     #previous-next button {
-    	width: 50%;
-    	height: 3rem;
-    	line-height: 3rem;
+        color: #fff;
+        background-color: #286090;
+        border-color: #204d74;
+        width: 35%;
+        height: 3rem;
+    }
+    #previous-next {
+        margin-top: 3rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        display: -webkit-flex;
+        -webkit-box-pack: space-around;
+        -webkit-justify-content: space-around;
+        -ms-flex-pack: space-around;
+        justify-content: space-around;
+    }
+    #need-help {
+        display: inline-block;
+        position: fixed;
+        width: 8rem;
+        height: 4rem;
+        border-radius: 2rem;
+        background-color: blue;
+        color: white;
+        line-height: 4rem;
+        text-align: center;
+        text-decoration: none;
+        right: 0;
+        bottom: 30%;
+    }
+    #help {
+        position: fixed;
+        width: 100%;
+        background-color: white;
+        top: -200px;
+        right: 0;
+        opacity: 0.85;
+    }
+    #help p {
+        width: 400px;
+        margin: auto;
+        text-indent: 2rem;
     }
 }
