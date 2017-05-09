@@ -3,8 +3,8 @@
     max-width: 400px;
 }
 
-.input-text{
-	height: 8rem;
+.input-text {
+    height: 6rem;
 }
 
 #notice {
@@ -16,4 +16,12 @@
     margin-top: 3rem;
     display: flex;
     justify-content: space-between;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    #previous-next button {
+    	width: 50%;
+    	height: 3rem;
+    	line-height: 3rem;
+    }
 }
