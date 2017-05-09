@@ -77,7 +77,7 @@ body {
     #need-help {
         display: inline-block;
         position: fixed;
-        width: 10rem;
+        width: 5rem;
         height: 4rem;
         border-radius: 2rem;
         border-style: none;
