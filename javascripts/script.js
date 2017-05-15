@@ -5,353 +5,193 @@
             str: "車",
             color: 0, //0和1分别表示红色黑色，方便选择棋子时互相转化
             posX: 450,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "rook",
             str: "車",
             color: 0,
             posX: 50,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "knight",
             str: "馬",
             color: 0,
             posX: 100,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "knight",
             str: "馬",
             color: 0,
             posX: 400,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "cannon",
             str: "砲",
             color: 0,
             posX: 100,
-            posY: 150,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 150
         }, {
             name: "cannon",
             str: "砲",
             color: 0,
             posX: 400,
-            posY: 150,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 150
         }, {
             name: "bishop",
             str: "象",
             color: 0,
             posX: 150,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "bishop",
             str: "象",
             color: 0,
             posX: 350,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "guard",
             str: "士",
             color: 0,
             posX: 200,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "guard",
             str: "士",
             color: 0,
             posX: 300,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "king",
             str: "将",
             color: 0,
             posX: 250,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "pawn",
             str: "卒",
             color: 0,
             posX: 50,
-            posY: 200,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 200
         }, {
             name: "pawn",
             str: "卒",
             color: 0,
             posX: 150,
-            posY: 200,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 200
         }, {
             name: "pawn",
             str: "卒",
             color: 0,
             posX: 250,
-            posY: 200,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 200
         }, {
             name: "pawn",
             str: "卒",
             color: 0,
             posX: 350,
-            posY: 200,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 200
         }, {
             name: "pawn",
             str: "卒",
             color: 0,
             posX: 450,
-            posY: 200,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 200
         }, {
             name: "rook",
             str: "俥",
             color: 1,
             posX: 450,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "rook",
             str: "俥",
             color: 1,
             posX: 50,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "knight",
             str: "傌",
             color: 1,
             posX: 100,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "knight",
             str: "傌",
             color: 1,
             posX: 400,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "cannon",
             str: "炮",
             color: 1,
             posX: 100,
-            posY: 150,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 150
         }, {
             name: "cannon",
             str: "炮",
             color: 1,
             posX: 400,
-            posY: 150,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 150
         }, {
             name: "bishop",
             str: "相",
             color: 1,
             posX: 150,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "bishop",
             str: "相",
             color: 1,
             posX: 350,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "guard",
             str: "仕",
             color: 1,
             posX: 200,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "guard",
             str: "仕",
             color: 1,
             posX: 300,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "king",
             str: "帥",
             color: 1,
             posX: 250,
-            posY: 50,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 50
         }, {
             name: "pawn",
             str: "兵",
             color: 1,
             posX: 50,
-            posY: 200,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 200
         }, {
             name: "pawn",
             str: "兵",
             color: 1,
             posX: 150,
-            posY: 200,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 200
         }, {
             name: "pawn",
             str: "兵",
             color: 1,
             posX: 250,
-            posY: 200,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 200
         }, {
             name: "pawn",
             str: "兵",
             color: 1,
             posX: 350,
-            posY: 200,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 200
         }, {
             name: "pawn",
             str: "兵",
             color: 1,
             posX: 450,
-            posY: 200,
-            offsetX: -9,
-            offsetY: 6,
-            radin: Math.PI,
-            circleR: 17,
-            fontSize: 20
+            posY: 200
         }]
         /*
         function inheritPrototype(subType, superType) {
@@ -623,12 +463,22 @@
     }*/
 
     function SubSoldier(soldierObj) { //棋子对象构造函数
-        let val;
+        let val,
+            offsetX = -9,
+            offsetY = 6,
+            radin = Math.PI,
+            circleR = 17,
+            fontSize = 20;
 
         for (let key in soldierObj) {
             val = soldierObj[key];
             this[key] = val;
         }
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
+        this.radin = radin;
+        this.circleR = circleR;
+        this.fontSize = fontSize;
     }
 
     function loopSoldierArr(dataSet) { //遍历dataset初始化对象列表
@@ -740,7 +590,7 @@
                 gameManager.showHistroy(temp);
             })
             $("#need-help").on("touchstart mousedown", function() {
-            	$("#help").stop(true);
+                $("#help").stop(true);
                 $("#help").animate({
                     top: "100px"
                 }, 600);
