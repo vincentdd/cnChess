@@ -1,0 +1,258 @@
+html
+{
+    font-family: 'microsoft yahei';
+    font-size: 50px;
+
+    height: 100%;
+}
+body
+{
+    height: 100%;
+}
+@keyframes progress{
+	0%   {order: 0;}
+	100% {order: 6;}
+}
+.actived
+{
+    box-shadow: 0 0 8px -6px #d4ecfb, 0 6px 10px #d4ecfb;
+}
+#container
+{
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+}
+#g-body
+{
+    font-size: 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #f5f5f5;
+
+    flex-wrap: wrap;
+    flex: auto;
+}
+.m-account-info
+{
+    box-sizing: border-box;
+    height: 3.24rem;
+    padding-top: .64rem;
+
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#5fc7ff), to(#2dded3));
+    background: -moz-linear-gradient(top, #5fc7ff,#2dded3);
+}
+.m-account-info .u-title
+{
+    font-size: 17px;
+
+    display: flex;
+
+    margin-bottom: .72rem;
+
+    color: #d5eedb;
+
+    justify-content: space-around;
+}
+.m-account-info .u-scores
+{
+    font-size: 33px;
+
+    display: flex;
+
+    color: #fff;
+
+    justify-content: center;
+}
+.u-account-notice
+{
+    font-size: 12px;
+    line-height: .77rem;
+
+    box-sizing: border-box;
+    height: .77rem;
+
+    text-align: center;
+
+    color: #d3f6ed;
+    border-top: solid 1px #6bdfd7;
+    background: #2cd3c7;
+}
+.u-progress
+{
+    display: flex;
+    padding: 0 .7rem;
+}
+#g-account-header .u-progress .u-right
+{
+    overflow: hidden;
+	animation: progress 4s steps(6) infinite;
+    width: .25rem;
+    height: .55rem;
+	order: 0;
+    background: transparent url('../images/progress.png');
+    background-position: -.25rem -.55rem;
+    background-size: .50rem .55rem;
+}
+#g-account-header .u-progress .u-point:nth-child(2) 
+{
+	order: 0;
+}
+#g-account-header .u-progress .u-point:nth-child(3) 
+{
+	order: 1;
+}
+#g-account-header .u-progress .u-point:nth-child(4)
+{
+	order: 2;
+}
+#g-account-header .u-progress .u-point:nth-child(5)
+{
+	order: 3;
+}
+#g-account-header .u-progress .u-point:nth-child(6)
+{
+	order: 4;
+}
+#g-account-header .u-progress .u-point
+{
+    overflow: hidden;
+
+    width: .25rem;
+    height: .55rem;
+    background: transparent url('../images/progress.png');
+    background-size: .50rem .55rem;
+}
+.m-list
+{
+    display: flex;
+
+    padding: .17rem .2rem 0rem;
+
+    color: #666;
+    background-color: #f5f5f5;
+
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-grow: 0;
+}
+.m-list .u-botton
+{
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    width: 2.28rem;
+    height: 2.58rem;
+    margin-bottom: .15rem;
+
+    text-align: center;
+
+    border: solid 1px #d8d8d8;
+    border-radius: 5px;
+    background-color: #fff;
+
+    align-items: center;
+}
+.m-list .disabled
+{
+    background-color: #f5f5f5;
+}
+.u-edit-tag
+{
+    font-size: 10px;
+    line-height: .39rem;
+
+    position: absolute;
+    top: .06rem;
+    right: .06rem;
+
+    width: .81rem;
+    height: .39rem;
+
+    color: #fff;
+    border-radius: 6px;
+    background-color: #ed8a1e;
+}
+.m-list .u-botton .icon
+{
+    overflow: hidden;
+
+    width: .54rem;
+    height: .81rem;
+    margin: .67rem 0 .21rem ;
+
+    background: transparent url('../images/icon.png');
+    background-size: 3.98rem .81rem;
+}
+.m-list .u-botton:nth-child(2) .icon
+{
+    width: .54rem;
+    height: .81rem;
+
+    background-position: -.54rem -.81rem;
+}
+.m-list .u-botton:nth-child(3) .icon
+{
+    width: .64rem;
+    height: .81rem;
+
+    background-position: -1.08rem -.81rem;
+}
+.m-list .u-botton:nth-child(4) .icon
+{
+    width: .68rem;
+    height: .81rem;
+
+    background-position: -1.72rem -.81rem;
+}
+.m-list .u-botton:nth-child(5) .icon
+{
+    width: .72rem;
+    height: .81rem;
+
+    background-position: -2.4rem -.81rem;
+}
+.m-list .u-botton:nth-child(6) .icon
+{
+    width: .86rem;
+    height: .81rem;
+
+    background-position: -3.12rem -.81rem;
+}
+.m-cotice
+{
+    display: flex;
+
+    flex: 1 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.u-pra .u-notice-title img
+{
+    width: .28rem;
+    height: .25rem;
+    margin-right: .19rem;
+}
+.m-cotice .u-notice-title
+{
+    margin-bottom: .19rem;
+
+    color: #ff8b17;
+}
+.m-cotice .u-notice-word
+{
+    color: #7a8a92;
+}
+.m-cotice .u-notice-word span
+{
+    display: block;
+
+    margin-bottom: .1rem;
+}
