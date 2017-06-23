@@ -1,5 +1,5 @@
 $().ready(function() {
-	function() {
+	function restFontSize() {
 		document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
 	}
 	/*IOS10禁止缩放*/
