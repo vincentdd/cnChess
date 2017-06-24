@@ -14,8 +14,8 @@ body
 	100% {order: 6;}
 }
 @-webkit-keyframes progress{
-	0%   {order: 0;}
-	100% {order: 6;}
+	0%   {-webkit-order: 0;}
+	100% {-webkit-order: 6;}
 }
 .actived
 {
