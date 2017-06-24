@@ -9,14 +9,6 @@ body
 {
     height: 100%;
 }
-@-webkit-keyframes progress{
-	0%   {-webkit-order: 0;}
-	100% {-webkit-order: 6;}
-}
-@keyframes progress{
-	0%   {order: 0;}
-	100% {order: 6;}
-}
 .actived
 {
     box-shadow: 0 0 8px -6px #d4ecfb, 0 6px 10px #d4ecfb;
@@ -88,39 +80,29 @@ body
 .u-progress
 {
     display: flex;
-    padding: 0 .7rem;
+    margin: 0 .7rem;
+    position: relative;
+}
+@-webkit-keyframes progress{
+    0%   {-webkit-transform: translateX(0rem);}
+    100% {-webkit-transform: translateX(1.5rem);}
+}
+@keyframes progress{
+    0%   {transform: translateX(0rem);}
+    100% {transform: translateX(1.5rem);}
 }
 #g-account-header .u-progress .u-right
 {
     overflow: hidden;
 	-webkit-animation: progress 4s steps(6) infinite;
 	animation: progress 4s steps(6) infinite;
+    position: absolute;
+    left: 0rem;
     width: .25rem;
     height: .55rem;
-	order: 0;
     background: transparent url('../images/progress.png');
     background-position: -.25rem -.55rem;
     background-size: .50rem .55rem;
-}
-#g-account-header .u-progress .u-point:nth-child(2) 
-{
-	order: 0;
-}
-#g-account-header .u-progress .u-point:nth-child(3) 
-{
-	order: 1;
-}
-#g-account-header .u-progress .u-point:nth-child(4)
-{
-	order: 2;
-}
-#g-account-header .u-progress .u-point:nth-child(5)
-{
-	order: 3;
-}
-#g-account-header .u-progress .u-point:nth-child(6)
-{
-	order: 4;
 }
 #g-account-header .u-progress .u-point
 {
